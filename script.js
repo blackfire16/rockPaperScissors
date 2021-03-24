@@ -1,37 +1,49 @@
-let player;
-let computer;
+let playerSelection;
+let computerSelection;
 
-computer = Math.random();
 
-function computerPlay(computer){
+function computerPlay(){
+    let computer = Math.random();
     if(computer<0.33){
-        computer = "piedra";
-        return computer;
+
+       return computer = "piedra"
+  
     }else if(computer<0.66){
-        computer= "papel";
-        return computer;
+
+       return computer = "papel"
+        
     }else{
-        computer = "tijera";
-        return  computer;
+
+       return computer = "tijera"
+        
       }    
-}
-player = prompt("Ingrese piedra papel o tijera?");
-function playGame(playerSelection, computerSelection){
-    if (player ==="piedra" && computer ==="papel"){
+    }
+
+    computerSelection = computerPlay();
+
+
+function playRound(playerSelection, computerSelection){
+    if (playerSelection === "piedra" && computerSelection ==="papel"){
         return "Gano la computadora";
-    }else if(player === "papel" && computer === "piedra"){
+    }else if(playerSelection === "papel" && computerSelection === "piedra"){
         return "Ganaste";
-    }else if(player === "tijera" && computer === "papel"){
+    }else if(playerSelection === "tijera" && computerSelection === "papel"){
         return "Ganaste";
-    }else if(player === "papel" && computer === "tijera"){
+    }else if(playerSelection === "papel" && computerSelection === "tijera"){
         return "Gano la computadora";
-    }else if(player === "tijera" && computer === "piedra"){
+    }else if(playerSelection === "tijera" && computerSelection === "piedra"){
         return "Gano la computadora";
-     }else if(player === "piedra" && computer === "tijera"){
+     }else if(playerSelection === "piedra" && computerSelection === "tijera"){
         return "Ganaste";
-     }else{
-         return "El resultado fue un empate";
-     }  
+     }
+       
 }
 
-playGame();
+function game(){
+    const playerSelection = prompt("Ingrese piedra papel o tijera: ");
+    const computerSelection = computerPlay();
+    document.write(playRound(playerSelection, computerSelection));
+    // Evaluar si el que gana mas de 3 veces el juego con la funcion playRound
+}
+
+game();
